@@ -36,7 +36,7 @@ class factorial
 public static void main(String[] args)
 	{
 	Scanner fac=new Scanner(System.in);
-	System.out.println("Enter the number");
+	System.out.println("Enter the number for Factorial");
 	int ab=fac.nextInt();
 	int ba=ab;
 	while(ba>1)
