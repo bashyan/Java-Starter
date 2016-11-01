@@ -1,7 +1,7 @@
 import java.util.*;
 class number
 { 
-/*int a,b,c;
+	int a,b,c;
 	public void number1()
 		{
 			a= 123654;
@@ -50,7 +50,7 @@ class number
 				} 
 			}
 		System.out.println("The greatest number is  "+g);
-		} */
+		} 
 
 	public void ascii()
 		{
@@ -85,9 +85,9 @@ class number
 public static void main(String[] args)
 	{
  	number rev = new number();
-	 /*rev.number1();
+	 rev.number1();
 	 rev.oddeven(); 
-	 rev.greater();  */
+	 rev.greater();  
 	 rev.ascii();
  
 	}
