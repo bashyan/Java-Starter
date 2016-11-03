@@ -1,0 +1,55 @@
+public class StringConcat{
+  int counter; // counting the length of char arrays
+  String str1 = "FirstString";
+  String str2 = "SecondString";
+
+  //for counting the length of both char arrays
+  public int countingLength(String str){
+    char[] strToCharArray = str.toCharArray();
+    for(char temp : strToCharArray){
+     counter++;
+    }    
+  }
+
+ //converting string into char array
+ char[] charArray1 = str1.tocharArray();
+ char[] charArray2 = str1.tocharArray();
+
+ //stores both char array   
+ char[] charContainer=new char[counter];//how to take counter as an index value here
+
+  //for storing charArray1 into charContainer
+  for(int i=0; i<charContainer.length; i++) {
+
+      if(charArray1 != null){
+        charContainer[i] +=  charArray1[i];
+      } else 
+        return charArray2; 
+  }  
+
+  //for storing charArray2 into charContainer
+  for(int i=0; i<charContainer.length; i++) {
+
+      if(charArray2 != null){
+        charContainer[i] +=  charArray1[i];
+      } else 
+        return charArray1; 
+  }  
+
+  //converting charContainer char array into string strContainer.
+  String strContainer = new String(charContainer);
+  //alternative : String strContainer = String.valueOf(charContainer); 
+
+ public static void main(String args[]){
+
+   /*Here i can call (As i'm not sure) 
+     StringConcat obj1 = new StringConcat();
+      obj1.countingLength(str1);
+
+     StringConcat obj2 = new StringConcat();
+      obj2.countingLength(str2);        
+  */
+   System.out.println("String Container : " +strContainer);  
+ }  
+
+}//end of the class
