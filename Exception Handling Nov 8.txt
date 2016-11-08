@@ -1,0 +1,25 @@
+1. what is use of inputstreamreader and bufferstream class?
+in java for every type of implementation we have the support of exception handling classes.
+1. if we perform arithmetic,
+2. if we perform array
+3. if we use objects 
+4. if we use files, db,network,thread, collections, data types etc...
+java supports exception for all these implementation
+
+"Exception" is the base class for all exception classes in java like
+1. IOException
+2. ArrayIndexOutOfBound
+3. Arithmetic
+4. FileNotFound
+5. NullpointerException
+
+2. what are diff types of exception in java? what is the diff btw checked and unchecked exception.
+Even java supports userdefines exceptions, .. which means as aprogrammer you can create your own exception class in java for exception handling as per your logic.
+
+3. what do we mean by userdefined exception in java and how top implement user defined exception with example
+
+4. what is use of try, catch, finally, throws and throw?
+
+//* 'finally' will execute wheather code has exception or not.
+
+5. what is use of input streamreader and bufferreader class? 
