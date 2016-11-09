@@ -1,0 +1,135 @@
+1. write a program to accept age from user, if age>18, than display msg that user is eligible for voting, but in other case, program must throw the exception regarding invalid age entry.
+class invalidaException extends Exception
+{
+	invalidaException(String a)
+	{
+		super(s);
+	}
+}
+class testException
+{
+	public void voteEligible(int age) throws invalidaException
+	{
+	if(age<18)
+	{
+		throw new invalidaException("not valid age");
+	}
+	else
+	{
+		System.out.println("Eligible for voting");
+	}
+	}
+	public static void main(String a[])
+	{
+	try {
+		voteEligible(13);
+	}
+	catch(invalidaException e)
+	{
+		System.out.println("exception occured");
+	}
+	}
+}
+
+
+2. what is constructor? what are the diff ways of implemnting constructor in java?
+
+3. what is use of "super", "this" in java?
+
+4. what is diff btw final,finally and finalize in java?
+
+5. how to implement base class constructor in child class?
+
+6. what is diff btw throw and throws?
+
+7. what is the use of randomaccessfile class in java?
+
+8. Classes surpporting file programming in java?
+ 	OBJECT  ----------- byteStream -- the data is written in bytes
+		- 1. InputStream
+			- FileinputStream
+			- ByteArrayInputStream
+			- ObjectInputStream
+		- 2. OutputStream
+			- FileOutputStream
+			- ByteArrayOutputStream
+			- ObjectOutputStream
+
+	String ------------- characterStream---------data written in char
+	OBJECT
+		- 1. InputStream
+			- FilterinputStream
+				> DataInputStream
+				>BufferedInputStream
+		- 2. OutputStream
+			- FilterOutputStream
+				> DataOutputStream
+				> BufferedOutputStream
+
+	FILE -------------characterstream-------------data written in char
+	OBJECT
+		- 1. Reader
+			-FileReader
+			-BufferedReader
+		- 2. Writer
+			- FileReader
+			- BufferedReader
+
+BIG DATA
+points to ponder during programming big data:
+> how to read and write text data
+> how to read and write binary data
+> how to read and write xml data
+> how to read the data from specific position of file
+> how to read the data by using specific delimiter of file
+> how to write data to specific position
+> how to write data at the end of file
+> how to read and write specific word or char from a given line
+
+
+FILE I/O
+import java.io.*;
+public class RandomAccessFIleDemo
+{
+
+public static void mani(String a[])
+{
+	String data = "this is java";
+	writetofile("javawrite.txt",23,data);
+	System.out.println("Data written");
+	String datafromfile = readfromfile("javawrite.txt",23);
+	System.out.println(datafromfile);
+}
+public static String readfromfile(String f, int position)
+{
+	String record = null;
+	try {
+	RandomAccessFile filestore = new RandomAccessFile("filename","rw")
+	filestore.seek(position);
+	record = filestrore.readUTF();
+	filestore.close();
+	}
+	catch (IOException e)
+	{
+	}
+	return record;
+}
+public static String writetofile(String f, int position)
+{
+	try {
+	RandomAccessFile filestore = new RandomAccessFile("filename","rw")
+	filestore.seek(position);
+	filestore.writeUTF(record);
+	filestore.close();
+	}
+	catch (IOException e)
+	{
+	}
+	
+}
+}
+
+
+	
+
+

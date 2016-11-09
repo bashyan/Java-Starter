@@ -1,85 +1,23 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
- 
-/**
- * This program demonstrates how to read characters from a text file
- * using a BufferedReader for efficiency.
- * @author www.codejava.net
- *
- */
-public class TextFileReadingExample3 {
- 
-    public static void main(String[] args) {
-        try {
-            FileReader reader = new FileReader("MyFile.txt");
-            BufferedReader bufferedReader = new BufferedReader(reader);
- 
-            String line;
- 
-            while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-            }
-            reader.close();
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
- 
+import java.io.*;
+public class fileread
+{
+	public static void main(String a[])
+	{
+	try 
+	{
+	File fileobj = null;
+	BufferedReader reader = null;
+	fileobj = new File("E:\\Bashyan\\Exception Handling Nov 9.txt");
+	reader = new BufferedReader(new FileReader(fileobj));
+	String str;
+	while((str = reader.readLine())!=null)
+	{
+	System.out.println(str);
+	} }
+	catch (Exception e)
+	{
+	System.out.println(e);}
+	}
 }
-
-import java.io.FileWriter;
-import java.io.IOException;
- 
-/**
- * This program demonstrates how to write characters to a text file.
- * @author www.codejava.net
- *
- */
-public class TextFileWritingExample1 {
- 
-    public static void main(String[] args) {
-        try {
-            FileWriter writer = new FileWriter("MyFile.txt", true);
-            writer.write("Hello World");
-            writer.write("\r\n");   // write new line
-            writer.write("Good Bye!");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
- 
-    }
- 
-}
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
- 
-/**
- * This program demonstrates how to write characters to a text file
- * using a BufferedReader for efficiency.
- * @author www.codejava.net
- *
- */
-public class TextFileWritingExample2 {
- 
-    public static void main(String[] args) {
-        try {
-            FileWriter writer = new FileWriter("MyFile.txt", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
- 
-            bufferedWriter.write("Hello World");
-            bufferedWriter.newLine();
-            bufferedWriter.write("See You Again!");
- 
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
- 
-    }
- 
-}
+	
+	
