@@ -1,5 +1,18 @@
 1. what is use of inputstreamreader and bufferstream class?
+
+Inputstreamreader - java.io.InputStreamReader  (use to read input from any source, irrespect of its datatype.)
+	Inputstreamreader is the bridge btw byte stream and character stream. It reads the bytes and decodes 
+them into character using specific charset (16- Unicode). Charset that used may be given by name or it may be 
+given explicitly or by default. 
+	Inputstreamreader's read() method reads one or more bytes from the byte-inputstream.
 in java for every type of implementation we have the support of exception handling classes.
+
+For higher efficient process, wrapping inputstreamreader within a bufferedreader increases the efficiency. 
+
+BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+Reads text from the character-input stream, buffering characters so as to provide for the efficient reading 
+of characters, arrays, and lines. 
+Errors -
 1. if we perform arithmetic,
 2. if we perform array
 3. if we use objects 
@@ -13,13 +26,56 @@ java supports exception for all these implementation
 4. FileNotFound
 5. NullpointerException
 
-2. what are diff types of exception in java? what is the diff btw checked and unchecked exception.
-Even java supports userdefines exceptions, .. which means as aprogrammer you can create your own exception class in java for exception handling as per your logic.
+2. what are diff types of exception in java? what is the diff btw checked and unchecked exception?
 
-3. what do we mean by userdefined exception in java and how top implement user defined exception with example
+Checked Execptions - 
+	It occurs at the compile time, also called as compile time exceptions. 
+	FileNotFoundException, IOException. 
+Unchecked Exceptions - 
+	It occurs at the time of execution, also called as run-time exception.
+	Programming bugs, such as logic errors, improper use of API, they are not checked at time of compilation.
+	ArithmeticException,NullPointerException, ArrayIndexOutOfBoundsException.
+
+Even java supports userdefines exceptions, .. which means as a programmer you can create your own exception class 
+in java for exception handling as per your logic.
+
+3. what do we mean by userdefined exception in java and how top implement user defined exception with example?
+	If we create our own exception, then it is called user defined exception.
+	
+	class MyIncorrectException extends Exception 
+	{
+	MyIncorrectException(String s) 
+	{
+  	super(s);
+   	}
+	}
+	class Input {
+   	void method() throws MyIncorrectException {
+   	throw new MyIncorrectException("Incorrect Input");
+   	}
+	}
+	class test 
+	{
+ 	public static void main(String[] args)
+	{
+	try {
+        new Input().method();
+      	}
+	catch(MyIncorrectException e) {
+        System.out.println(e.getMessage());
+      	}
+   	} 
+	} 
 
 4. what is use of try, catch, finally, throws and throw?
-
+Try (run-time)- The code predicted to be exception can be enclosed inside the try block.
+Catch - It handles the exception and resumes the program. 
+Throw - It's used to throw exceptions explicitly by the user. syntax - throw object;
+Throws - It's used to declare exception. Checked exceptions only can be used. 
+	There may occur exception, so it's better to provide ex. handling codes.   
+Finally - Java finally block is a block that is used to execute important code such as 
+	closing connection, stream etc. Java finally block is always executed whether exception 
+	is handled or not. Java finally block follows try or catch block.
 //* 'finally' will execute wheather code has exception or not.
 
 5. what is use of input streamreader and bufferreader class? 
