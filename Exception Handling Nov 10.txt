@@ -1,0 +1,121 @@
+******Inheritance*********
+
+class A
+{
+	public A()
+	{
+		System.out.println("Base Class");
+	}
+}
+class B extends A
+{
+	public B()
+	{
+		System.out.println("Child Class");
+	}
+}
+class main
+{
+	public static void main(String[] args)
+	{
+		B bobj = new B();
+	}
+}
+
+1. How to append the content inside file while writing the data?
+
+import java.io.*;
+public class appendData
+{
+	public static void main(String[] a)
+	{
+		try
+		{
+			String data = "This is additional data";
+			File fobj = new File("......path of the file.txt.....");
+			if(!fobj.exists())
+			{
+				fobj.createNewFile();
+			}
+			FileWriter fw = new FileWriter(fobj.getName(),true);
+			BufferedWriter bw = new BufferedWriter(fw);			
+			bw.write(data,10,10);
+		}
+		catch(IOException e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+}
+
+2. What is the diff btw FileInputStraem and FileReader, and the FileOutputStream and FileWriter?
+	Stream - to read/write music,image and other data in byte format
+	Reader/Writer - to write txt data in character format
+
+3. Write a program to accept Customer detail like customer id, name, age and salary. Write this data to 
+the file delimited by ','. After writing, read customer name and age , display in VDU.
+
+import java.io.*;
+import java.util.*;
+public class FileCustReader
+{
+	public static void main(String g[]) throws Exception
+	{
+		
+		
+		// Write Customer details to .txt file
+		
+		FileWriter filew = new FileWriter("D:\\FileWriter.txt");
+		Scanner ab = new Scanner(System.in);
+		System.out.println("Enter number of customer details to be stored");
+		int count = ab.nextInt();
+		String s1[][] = new String[count][3];	
+		
+		for(int i=0; i<count; i++)
+		{
+			System.out.println("Enter customer #"+(i+1)+" ID, Name, Age");		
+			for(int j=0;j<3;j++)
+			{
+				s1[i][j] = ab.next();				
+			}			
+		}
+		
+		for(String[] A : s1)
+		{ 
+			for(String B : A)
+			{
+				filew.write(B);
+			}
+		}
+		
+		System.out.println("Customer_ID"+"\t"+"Name"+"\t\t"+"\tAge");
+		
+		for(int i=0; i<count; i++)
+		{						
+			for(int j=0;j<3;j++)
+			{				
+				System.out.print(s1[i][j]+"\t\t\t");
+			}
+			System.out.println("");
+		}		
+		System.out.println("File Written");
+		filew.close();
+		// Read .txt file
+		
+				FileReader filer = new FileReader("D:\\FileWriter.txt");
+				BufferedReader buffer = new BufferedReader(filer);
+				String s;
+				
+				while((s = buffer.readLine())!=null)
+				{
+					String [] arr = s.split(",");
+					for (String W: arr)
+						{
+						System.out.println(W);
+						}
+					
+				}
+				
+				filer.close();
+	}
+}
