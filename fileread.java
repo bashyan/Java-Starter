@@ -5,10 +5,8 @@ public class fileread
 	{
 	try 
 	{
-	File fileobj = null;
-	BufferedReader reader = null;
-	fileobj = new File("E:\\Bashyan\\Exception Handling Nov 9.txt");
-	reader = new BufferedReader(new FileReader(fileobj));
+	FileReader fileobj = new FileReader("C:\\Users\\Bashyan PC\\Documents\\GitHub\\Java-Starter\\Exception Handling Nov 8.txt");
+	BufferedReader reader = new BufferedReader(fileobj);
 	String str;
 	while((str = reader.readLine())!=null)
 	{
@@ -16,7 +14,22 @@ public class fileread
 	} }
 	catch (Exception e)
 	{
-	System.out.println(e);}
+	System.out.println(e);} 
+	
+	/*//try 
+	//{
+	File fileobj1 = null;
+	BufferedWriter writer = null;
+	fileobj1 = new File("C:\\Users\\Bashyan PC\\Documents\\GitHub\\Java-Starter\\Exception Handling Nov 10.txt");
+	//writer = new BufferedWriter(new FileWriter(fileobj1));
+	String str1 = "Hi";
+	
+		writer = new BufferedWriter(new FileWriter(fileobj1));
+	System.out.println("written");
+	//} 
+	//catch (Exception e)
+	//{
+	//System.out.println(e);}*/
 	}
 }
 	

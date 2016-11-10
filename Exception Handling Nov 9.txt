@@ -34,17 +34,78 @@ class testException
 
 2. what is constructor? what are the diff ways of implemnting constructor in java?
 
+	Constructor initializes an object immediately upon creation. It has the same name as the 
+	class in which it resides and is syntactically similar to a method. Once defined, the constructor 
+	is automatically called immediately after the object is created, before the new operator completes.
+	Contructor has no return type, not even void. The implicit return type of constructor is class itself.
+
+	Classnameasconstructor() { .....constructor block............}
+
+	Constructor in java is a special type of method that is used to initialize the object.
+	Java constructor is invoked at the time of object creation. It constructs the values 
+	i.e. provides data for the object that is why it is known as constructor
+
 3. what is use of "super", "this" in java?
+
+	The super keyword in java is a reference variable that is used to refer immediate parent class object.
+	Whenever you create the instance of subclass, an instance of parent class is created implicitly 
+	i.e. referred by super reference variable.
+	super is used to refer immediate parent class instance variable.
+	super() is used to invoke immediate parent class constructor.
+	super is used to invoke immediate parent class method.
+
+	this keyword can be used to refer current class instance variable.
+	this() can be used to invoke current class constructor.
+	this keyword can be used to invoke current class method (implicitly)
+	this can be passed as an argument in the method call.
+	this can be passed as argument in the constructor call.
+	this keyword can also be used to return the current class instance.
 
 4. what is diff btw final,finally and finalize in java?
 
+	Final is used to apply restrictions on class, method and variable.
+ 	Final class can't be inherited, final method can't be overridden and final variable value can't be changed.
+	Final is a keyword.	
+
+	Finally is used to place important code, it will be executed whether exception is handled or not.
+	Finally is a block.	
+
+	Finalize is used to perform clean up processing just before object is garbage collected.
+	Finalize is a method.
+
 5. how to implement base class constructor in child class?
 
+	base class constructor canot be inherited, this constructor can be invoked in child class
+	by invoking, by using super keyword.
+
+	if 1 or more contructors in the parent class have parameters and no args constructor is absent, 
+	then the subclass has to have at least 1 constructor where an implicit call for the parent class 
+	construct is made via super (parent_constructor params)
+
 6. what is diff btw throw and throws?
+	
+	Java throw keyword is used to explicitly throw an exception.		Java throws keyword is used to declare an exception.
+	Checked exception cannot be propagated using throw only.		Checked exception can be propagated with throws.
+	Throw is followed by an instance.					Throws is followed by class.
+	Throw is used within the method.					Throws is used with the method signature.
+	You cannot throw multiple exceptions.					You can declare multiple exceptions 
+										e.g.public void method()throws IOException,SQLException.
+					void add()throws ArithmeticException
+					{  
+					throw new ArithmeticException("mismatch");  
+					} 
+
 
 7. what is the use of randomaccessfile class in java?
 
-8. Classes surpporting file programming in java?
+	A random access file behaves like a large array of bytes stored in the file system. 
+	There is a kind of cursor, or index into the implied array, called the file pointer; 
+	input operations read bytes starting at the file pointer and advance the file pointer past the bytes read.
+	FILE POINTER is used to position the file.
+
+	
+
+8. Classes supporting file programming in java?
  	OBJECT  ----------- byteStream -- the data is written in bytes
 		- 1. InputStream
 			- FileinputStream

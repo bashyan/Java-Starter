@@ -29,15 +29,8 @@ public class exceptionHandling
 		}
 	public static void main(String str[])
 		{
-		byte b = 1;
- 		   Byte bObj1 = new Byte(b);
-   
-    /*
-    2. Create Byte object from String. Please note that this method can
-    throw NumberFormatException if string doesnt contain parsable number.
-    */	
-		
-   		//print value of Byte objects
+			byte b = 1;
+ 		   Byte bObj1 = new Byte(b);  
     		System.out.println(bObj1);
 
 		handling();
