@@ -26,7 +26,6 @@ public class line
 		String str[] = new String[10];
 		while((s = bufferr.readLine())!=null)
 		{
-			//s = bufferr.readLine();			
 			str[i] = s;			
 			i++;			
 		}
