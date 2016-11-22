@@ -1,0 +1,29 @@
+add() function accepts only Object.  add(Object e);
+
+  t1. if add() takes the object as a parameter then how it takes int, float, char?
+	Object is the bass class for all class in java. So it supports all parameters of its child class.
+
+  t2. what is the use of iterator while using java collections?
+
+  t3. what is the diff btw Iterator and listIterator?
+
+  t4. what is the functional diff btw the collections mentioned below:
+	ArrayList Vs LinkedList Vs Vector
+	HashSet Vs TreeSet Vs LinkedHashSet
+
+topics covered, 
+	iterator
+	linkedlist- easy for manipulation, but tough for adding/storing elements
+	hashset  -  avoids duplication in elements
+	treeset  -  arranges in sorted manner, and avoids duplication in elements
+
+1. program to Iterate LinkedList in reverse order.
+
+2. program to swap 2 elements in an ArrayList.
+
+3. program to convert HashSet into TreeSet.
+
+4. program to check whether an element exist in LinkedList.
+
+5. program to remove first and last element of LinkedList.
+			
