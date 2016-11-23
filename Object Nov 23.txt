@@ -1,0 +1,42 @@
+	
+
+	try(object)
+	{
+	}
+	catch
+	{
+	e.printStackTrace();
+	}
+
+ 	try with bracket [try()] is called try with resource, introduced from JDK1.7, 
+	so finally is not required.
+
+class copy
+{
+main(String qwe[])
+{
+byte[] b = new byte[100];
+try(FileInputStream fis = new FileInputStream(qwe[0]); FileOutputStream fos = new FileOutputStream(qwe[1]))
+{
+while((n=fis.read())!=-1)
+{
+
+
+
+Serialization - It is the process in which the objects  are written to the file.
+
+Deserialization - String is converted to object
+
+trasient
+
+getter and setter
+
+constructstring -- buffer class / stringBuilder
+
+ObjectOutputStream
+
+Object instanceof Class
+
+
+
+
