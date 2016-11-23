@@ -1,15 +1,90 @@
 add() function accepts only Object.  add(Object e);
 
   t1. if add() takes the object as a parameter then how it takes int, float, char?
+	
 	Object is the bass class for all class in java. So it supports all parameters of its child class.
+	 You can pass an instance of any class for the Object argument because all Java classes are subclasses of Object. The sub class has all
+		the information of super class and also the implementation with type casting internally. 
 
   t2. what is the use of iterator while using java collections?
 
+	An iterator is a mechanism that permits all elements of a collection to be accessed sequentially, 
+	with some operation being performed on each element. In essence, an iterator provides a means of "looping" 
+	over an encapsulated collection of objects. Examples of using iterators include
+
+		Visit each file in a directory (aka folder) and display its name.
+		Visit each node in a graph and determine whether it is reachable from a given node.
+		Visit each customer in a queue (for instance, simulating a line in a bank) and find out how long he or she has been waiting.
+		Visit each node in a compiler's abstract syntax tree (which is produced by the parser) and perform semantic checking or code generation. (You could also use the Visitor pattern in this context.)
+
+	Iterator is used when you want to remove stuff whilst you iterate over the array contents. 
+	If you don't use an iterator but simply have a for loop and inside it use the remove method you will get exceptions 
+	because the contents of the array changes while you iterate through. e.g: you might think array size is 10 at the start of the 
+	for loop but it wont be the case once you remove stuff.. so when u reach the last loops probably there will be IndexOutofBoundsException
+
+	ArrayList size is sometimes unpredictable, so when using loop limit as size() in for loop, then it may throw the exceptions. this can be
+	handled by enhanced for loop, but we can explcitly initiate the iteration, so came the iteratorInterface, Iterator is safe to use when
+	collection size is changing.
+
   t3. what is the diff btw Iterator and listIterator?
+	
+	1) Iterator is used for traversing List and Set both.
+	We can use ListIterator to traverse List only, we cannot traverse Set using ListIterator.
+
+	2) We can traverse in only forward direction using Iterator.
+	Using ListIterator, we can traverse a List in both the directions (forward and Backward).
+
+	3) We cannot obtain indexes while using Iterator
+	We can obtain indexes at any point of time while traversing a list using ListIterator. The methods nextIndex() and previousIndex() are used for this purpose.
+
+	4) We cannot add element to collection while traversing it using Iterator, it throws ConcurrentModificationException when you try to do it.
+	We can add element at any point of time while traversing a list using ListIterator.
+
+	5) We cannot replace the existing element value when using Iterator.
+	By using set(E e) method of ListIterator we can replace the last element returned by next() or previous() methods.
+
+	6) Methods of Iterator:
+	hasNext()
+	next()
+	remove()
+
+	Methods of ListIterator:
+	add(E e)
+	hasNext()
+	hasPrevious()
+	next()
+	nextIndex()
+	previous()
+	previousIndex()
+	remove()
+	set(E e)
 
   t4. what is the functional diff btw the collections mentioned below:
+	
 	ArrayList Vs LinkedList Vs Vector
+
+	ArrayList is implemented as a resizable array. As more elements are added to ArrayList, its size is increased dynamically. 
+	It's elements can be accessed directly by using the get and set methods, since ArrayList is essentially an array. 
+	LinkedList is implemented as a double linked list. Its performance on add and remove is better than Arraylist, but worse on get 
+	and set methods. Vector is similar with ArrayList, but it is synchronized. ArrayList is a better choice if your program is thread-safe. 
+	Vector and ArrayList require space as more elements are added. Vector each time doubles its array size, while ArrayList grow 50% of its 
+	size each time. LinkedList, however, also implements Queue interface which adds more methods than ArrayList and Vector, such as offer(), 
+	peek(), poll(), etc.    Note: The default initial capacity of an ArrayList is pretty small. It is a good habit to construct the ArrayList 
+	with a higher initial capacity. This can avoid the resizing cost.
+
+	LinkedList is faster in add and remove, but slower in get. 
+	In brief, LinkedList should be preferred if: 
+	there are no large number of random access of element
+	there are a large number of add/remove operations
+	
 	HashSet Vs TreeSet Vs LinkedHashSet
+
+	HashSet is Implemented using a hash table. Elements are not ordered. The add, remove, and contains methods have constant time complexity O(1).
+	TreeSet is implemented using a tree structure(red-black tree in algorithm book). The elements in a set are sorted, but the add, remove, 
+	and contains methods has time complexity of O(log (n)). 
+	It offers several methods to deal with the ordered set like first(), last(), headSet(), tailSet(), etc.
+	LinkedHashSet is between HashSet and TreeSet. It is implemented as a hash table with a linked list running through it, 
+	so it provides the order of insertion. The time complexity of basic methods is O(1).
 
 topics covered, 
 	iterator
@@ -18,6 +93,8 @@ topics covered,
 	treeset  -  arranges in sorted manner, and avoids duplication in elements
 
 1. program to Iterate LinkedList in reverse order.
+
+	
 
 2. program to swap 2 elements in an ArrayList.
 
