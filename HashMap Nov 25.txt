@@ -1,0 +1,65 @@
+1. program to create a hashmap which will contain the key as option and value as type of drinks required. 
+	Accept choice from user and display proper drinks.
+		1-tea
+		2-coffee
+		3-water
+		4-juice
+
+
+import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class Drinks
+{
+	public static void main(String[] qwe)
+	{
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		hm.put(1, "Tea");
+		hm.put(2, "Coffee");
+		hm.put(3, "Water");
+		hm.put(4, "Juice");
+		System.out.println("Enter Choice from 1 to 4");
+		int choice = new Scanner(System.in).nextInt();
+		Set<Integer> keychoice = hm.keySet();
+		for(Integer I : keychoice)
+		{
+			System.out.println(I);
+			String drink = hm.get(I);
+			if(I==choice)
+			{
+				System.out.println("Entered Choice of drink is "+drink);
+			}
+		}
+	}
+}
+
+2. program to accept data in hashmap and after that arrange the data based upon key.
+	search the data by providing the value, check whether given value exist or not.
+	display all the keys and values available using iterator.
+		Name-Salary
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+public class HashSalary 
+{
+     public static void main(String[] args) 
+     {
+         HashMap<String, Integer> tm = new HashMap<String, Integer>();
+	Scanner sc = new Scanner(System.in);
+	for(int i=0;i<4;i++)
+	{
+	
+         for(Map.Entry M : tm.entrySet())
+         {
+             System.out.println(M+" "+tm.containsKey());
+         }
+         tm.remove(3476);
+         for(Map.Entry R : tm.entrySet())
+         {
+             System.out.println(R+"  "+tm.get(5123)+" "+tm.containsKey(3476));
+         }
+	}
+}
+
