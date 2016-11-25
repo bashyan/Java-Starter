@@ -1,0 +1,423 @@
+Activity:
+Set up the Application to use DAO Pattern
+DAO ---> Data Access Object Pattern
+
+Create packages 
+com.example.dao
+com.example.model
+com.example.test
+
+1.   
+package com.example.dao;
+
+import com.example.model.Employee;
+
+public interface EmployeeDAO {
+
+    public void add(Employee emp);
+
+    public void update(Employee emp);
+
+    public void delete(int id);
+
+    public Employee findById(int id);
+
+    public Employee[] getAllEmployees();
+    
+}
+
+2. 
+---------------------
+package com.example.dao;
+
+import com.example.model.Employee;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeDAOMemoryImpl implements EmployeeDAO {
+
+    // not thread-safe
+    private static Employee[] employeeArray = new Employee[10];
+
+    // package level access
+    EmployeeDAOMemoryImpl() {
+    }
+
+    // Add an Employee record
+    public void add(Employee emp) {
+        employeeArray[emp.getId()] = emp;
+    }
+
+    // Update an employee record
+    public void update(Employee emp) {
+        employeeArray[emp.getId()] = emp;
+    }
+
+    // Delete an employee record that has this ID
+    public void delete(int id) {
+        employeeArray[id] = null;
+    }
+
+    // Find an Employee record using this ID
+    public Employee findById(int id) {
+        return employeeArray[id];
+    }
+
+    // Return an array of all of the Employee records
+    // We are using a collection List object to store the results
+    // This makes it easier to just add to the collection
+    public Employee[] getAllEmployees() {
+
+        List<Employee> emps = new ArrayList<>();
+        // Iterate through the memory array and find Employee objects
+        for (Employee e : employeeArray) {
+            if (e != null) {
+                emps.add(e);
+            }
+        }
+        return emps.toArray(new Employee[0]);
+    }
+}
+-----------------
+3. 
+package com.example.dao;
+
+public class EmployeeDAOFactory {
+
+    public EmployeeDAO createEmployeeDAO() {
+        return new EmployeeDAOMemoryImpl();
+    }
+}
+
+------------------------------------------------------
+package com.example.model;
+
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Employee {
+
+    private int id;
+    private String firstName;
+    private String lastName;
+    private Date birthDate;
+    private float salary;
+
+    public Employee() {
+    }
+
+    public Employee(int id, String firstName, String lastName, Date birthDate, float salary) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee ID:   " + getId() + "\n"
+                + "Employee Name: " + getFirstName() + " " + getLastName() + "\n"
+                + "Birth Date:    " + new SimpleDateFormat("MMM d, yyyy").format(getBirthDate()) + "\n"
+                + "Salary:        " + NumberFormat.getCurrencyInstance().format((double) getSalary());
+    }
+}
+
+========================================
+Test....
+
+package com.example.test;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import com.example.model.Employee;
+import com.example.dao.EmployeeDAOFactory;
+import com.example.dao.EmployeeDAO;
+import java.util.Date;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class EmployeeTestInteractive {
+
+    public static void main(String[] args) throws Exception {
+        EmployeeDAOFactory factory = new EmployeeDAOFactory();
+
+        boolean timeToQuit = false;
+
+        EmployeeDAO dao = factory.createEmployeeDAO();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        do {
+            timeToQuit = executeMenu(in, dao);
+        } while (!timeToQuit);
+    }
+
+    public static boolean executeMenu(BufferedReader in, EmployeeDAO dao) throws IOException {
+        Employee emp;
+        String action;
+        int id;
+
+        System.out.println("\n\n[C]reate | [R]ead | [U]pdate | [D]elete | [L]ist | [Q]uit: ");
+        action = in.readLine();
+        if ((action.length() == 0) || action.toUpperCase().charAt(0) == 'Q') {
+            return true;
+        }
+
+        switch (action.toUpperCase().charAt(0)) {
+            // Create a new employee record
+            case 'C':
+                emp = inputEmployee(in);
+                dao.add(emp);
+                System.out.println("Successfully added Employee Record: " + emp.getId());
+                System.out.println("\n\nCreated " + emp);
+                break;
+
+            // Display an employee record
+            case 'R':
+                System.out.println("Enter int value for employee id: ");
+                id = new Integer(in.readLine().trim());
+
+                // Find this Employee record
+                emp = dao.findById(id);
+                if (emp != null) {
+                    System.out.println(emp + "\n");
+                } else {
+                    System.out.println("\n\nEmployee " + id + " not found");
+                    break;
+                }
+
+                break;
+
+            // Update an existing employee record    
+            case 'U':
+                System.out.println("Enter int value for employee id: ");
+                id = new Integer(in.readLine().trim());
+                // Find this Employee record
+                emp = null;
+                emp = dao.findById(id);
+                if (emp == null) {
+                    System.out.println("\n\nEmployee " + id + " not found");
+                    break;
+                }
+                // Go through the record to allow changes
+
+                emp = inputEmployee(in, emp);
+                dao.update(emp);
+                System.out.println("Successfully updated Employee Record: " + emp.getId());
+                break;
+
+            // Delete an employee record
+            case 'D':
+                System.out.println("Enter int value for employee id: ");
+                id = new Integer(in.readLine().trim());
+               
+                dao.delete(id);
+                System.out.println("Deleted Employee " + id);
+                break;
+
+            // Display a list (Read the records) of Employees
+            case 'L':
+                Employee[] allEmps = dao.getAllEmployees();
+                for (Employee employee : allEmps) {
+                    System.out.println(employee + "\n");
+                }
+                break;
+        }
+
+        return false;
+    }
+
+    public static Employee inputEmployee(BufferedReader in) throws IOException {
+        return inputEmployee(in, null, true);
+    }
+
+    public static Employee inputEmployee(BufferedReader in, Employee empDefaults) throws IOException {
+        return inputEmployee(in, empDefaults, false);
+    }
+
+    public static Employee inputEmployee(BufferedReader in, Employee empDefaults, boolean newEmployee) throws IOException {
+        SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy");
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        int id = -1;
+        String firstName;
+        String lastName;
+        Date birthDate = null;
+        Employee emp;
+        float salary;
+
+        if (newEmployee) {
+            do {
+                System.out.println("Enter int value for employee id: ");
+                try {
+                    id = new Integer(in.readLine().trim());
+                    if (id < 0) {
+                        System.out.println("Please retry with a valid positive integer id");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Please retry with a valid positive integer id");
+                }
+            } while (id < 0);
+        } else {
+            id = empDefaults.getId();
+            System.out.println("Modify the fields of Employee record: " + id
+                    + ". Press return to accept current value.");
+        }
+
+        String prompt = "Enter value for employee first name" + ((empDefaults == null) ? "" : " [" + empDefaults.getFirstName() + "]");
+
+        do {
+            System.out.println(prompt + " : ");
+            firstName = in.readLine().trim();
+            if (firstName.equals("") && empDefaults != null) {
+                firstName = empDefaults.getFirstName();
+            }
+            if (firstName.length() < 1) {
+                System.out.println("Please retry with a valid first name");
+            }
+        } while (firstName.length() < 1);
+
+
+        prompt = "Enter value for employee last name" + ((empDefaults == null) ? "" : " [" + empDefaults.getLastName() + "]");
+        do {
+            System.out.println(prompt + " : ");
+            lastName = in.readLine().trim();
+            if (lastName.equals("") && empDefaults != null) {
+                lastName = empDefaults.getLastName();
+            }
+            if (lastName.length() < 1) {
+                System.out.println("Please retry with a valid last name");
+            }
+        } while (lastName.length() < 1);
+
+
+        prompt = "Enter value for employee birth date (" + df.toLocalizedPattern() + ")"
+                + ((empDefaults == null) ? "" : " [" + df.format(empDefaults.getBirthDate()) + "]");
+        do {
+            System.out.println(prompt + " : ");
+            String dateStr = in.readLine().trim();
+            if (dateStr.equals("") && empDefaults != null) {
+                birthDate = empDefaults.getBirthDate();
+            } else {
+                birthDate = null;
+                try {
+                    birthDate = new Date(df.parse(dateStr).getTime());
+                } catch (ParseException e) {
+                    System.out.println("Please retry with a valid birth date: " + e.getMessage());
+                }
+            }
+        } while (birthDate == null);
+
+
+        prompt = "Enter float value for employee salary"
+                + ((empDefaults == null) ? "" : " [" + nf.format((double) empDefaults.getSalary()) + "]");
+        do {
+            System.out.println(prompt + " : ");
+            salary = 0;
+            try {
+                String amt = in.readLine().trim();
+                if (!amt.equals("")) {
+                    salary = Float.parseFloat(amt);
+                }
+                if (salary == 0 && empDefaults != null) {
+                    salary = empDefaults.getSalary();
+                }
+                if (salary < 0) {
+                    System.out.println("Please retry with a positive salary");
+                    salary = 0;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please retry with a valid float salary: " + e.getMessage());
+            }
+        } while (salary == 0);
+
+        // Create an Employee object
+        emp = new Employee(id, firstName, lastName, birthDate, salary);
+        return emp;
+    }
+}
+
+=========================
+Demo 2:
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package collectiondemo;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+
+public class ProductCounter {
+
+    
+    private Map<String, Long> productCountMap = new HashMap<>();
+    private Map<String, String> productNames = new TreeMap<>();
+
+	public ProductCounter(Map productNames) {
+        this.productNames = productNames;
+    }
+    public void printReport() {
+        System.out.println("=== Product Report ===");
+        for (String key : productNames.keySet()) {
+            System.out.print("Name: " + key);
+            System.out.println("\t\tCount: " + productCountMap.get(productNames.get(key)));
+        }
+    }
+    public void processList(String[] list) {
+        long curVal = 0;
+        for (String itemNumber : list) {
+            if (productCountMap.containsKey(itemNumber)) {
+                curVal = productCountMap.get(itemNumber);
+                curVal++;
+                productCountMap.put(itemNumber, new Long(curVal));
+            } else {
+                productCountMap.put(itemNumber, new Long(1));
+            }
+        }
+}
+    public static void main(String[] args) {
+
+        // List of part data
+        String[] parts = new String[]{"S","S","S","M","M","M","L", "XL","S","L", "L","XL","XL"};
+
+        // Create Product Name Part Number map
+       Map<String, String> productNames = new TreeMap<>();
+        productNames.put("Blue Polo Shirt", "L");
+        productNames.put("Black Polo Shirt", "S");
+        productNames.put("Red Ball Cap", "XL");
+        productNames.put("Duke Mug   ", "M");
+
+        // Create Product Counter Object and process
+        ProductCounter pc1 = new ProductCounter(productNames);
+        pc1.processList(parts);
+        pc1.printReport();
+    }
+
+}
+
+==================================
