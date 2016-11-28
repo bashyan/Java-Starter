@@ -1,0 +1,33 @@
+Website - 
+	A collection of webpages, maybe read-only.
+
+Wep Application - 
+	A server-client interaction, a application running on server/web.
+Server - 
+	It's used to access data on other machines, its the centralized node. work on multiple user interaction at a time.
+
+Servlet - 
+	It's a java program used in building web application. This acts like a server and enables the program to 
+	receive request and sends back reponses to the client.
+
+	Servlet is a class that extend the capabilities of the servers and respond to the incoming request. 
+	It can respond to any type of requests. Servlet is a web component that is deployed on the server 
+	to create dynamic web page
+
+JSP -  Java Server pages, used in building web application. acts as the front end view of the application, with which the user interacts.
+
+JSP gives request to webcontainer(it has servlets)
+
+Life cycle of Servlets:
+	> init() - method is invoked to INITIALIZE (first time instantiated in memory) the servlet.
+	> service() - servlet will call this method to process (working in RAM) the request.
+	> destroy() - method is invoked to terminate (out of scope, flushed from memory) the servlet.
+
+HTTPServlet Class - this class contain multiple methods which can be used in any servlet request, response or life cyle phase.
+	1. doget(HTTPServlet Request req, HTTPServlet Response res) , This method is used to handle GET requests, 
+	this GET request passes data along with the forwarding of request.
+	-> when using GET method - the passed info will be displayed in the URL. 
+
+	2. doPost(HTTPServlet Request req, HTTPServlet Response res) , this method is used to handle POST requests. 
+	This post request will forward the request to the servlet seperately and pass the data seperately in the hidden packets.
+
