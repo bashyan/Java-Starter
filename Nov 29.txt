@@ -1,0 +1,24 @@
+int checkAge = Integer.parseInt(Age);
+float tempSalary = Float.parseFloat(Sal);
+if(checkAge>30)
+	{
+	Sal = Sal + 3500;
+	}
+if(CZ!="Indian")
+	{
+	tempSalary = tempSalary + ((tempSalary*10)/100);
+	}
+String emailReverse = new StringBuffer(Email).reverse().toString();
+String subStr = emailReverse.substring(0,7);
+if(subStr!="com.niit")
+	{
+	Email = "invalid email";
+	} 
+if(!Email.contains("niit.com"))
+if(!CZ.equals("Indian"))
+{ float sal = sal * (0.90f); }
+1. what is servlet, jsp?
+2. what is the use of HttpServlet class?
+3. what is the use of doGet, doPost, define all the parameters properly?
+4. how to create web page and process the data using HTML, Servlet and JSP?
+5. how to use getParameter method?
