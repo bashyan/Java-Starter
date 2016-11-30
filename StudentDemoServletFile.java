@@ -56,28 +56,25 @@ public class StudentDemoServletFile extends HttpServlet
           s[1] = "Student Name \t: ";  
           s[2] = "Student Age \t: ";      
           s[3] = "Student Mark \t: ";  
-          s[4] = "Student % \t: ";  
+          s[4] = "Student Perc \t: ";  
           s[5] = "Student Grade \t: ";  
           s1[0] = String.valueOf(StuID);  
           s1[1] = StuName;  
           s1[2] = StuAge;  
           s1[3] = String.valueOf(StuMark);  
-          s1[4] = String.valueOf(StuPer);  
-          s1[5] = StuGrade; 
-        int StuCount = 0;
+          s1[4] = String.valueOf(StuPer)+"%";  
+          s1[5] = StuGrade;         
 	
-	FileWriter fout = new FileWriter("E:\\Nebw faoslhdyearn\\StudentServletDemo.txt",true);        
-	BufferedWriter bw = new BufferedWriter(fout);
-        StuCount++;
-        bw.write("//");
-        bw.write("Student "+StuCount);
+	FileWriter fout = new FileWriter("C:\\Users\\Bashyan PC\\Documents\\NetBeansProjects\\StudentDemoServletFile\\StudentServletDemo.txt",true);        
+	BufferedWriter bw = new BufferedWriter(fout);        
+        bw.write("Student Data");
         bw.newLine();
         for(int i=0; i<6; i++)  
         {
-	      bw.write(s[i]+s1[i]+",");  
+	      bw.write(s[i]+s1[i]);  
               bw.newLine();  
         }
-	bw.write("/nextData");
+	bw.write("//");
         bw.newLine();
         bw.close();
         
