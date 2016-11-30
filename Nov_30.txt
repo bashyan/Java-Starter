@@ -1,0 +1,211 @@
+1. getParameter() - returns the value of a request parameter as a string, or null if the parameter
+	doesn't exist.
+
+2. HTTPServlet Class - this class contain multiple methods which can be used in any servlet request, 
+	response or life cyle phase.
+
+3. Servlet - It's a java program used in building web application. This acts like a server and enables 
+	the program to receive request and sends back reponses to the client.
+
+4. JSP - Java Server pages, used in building web application. acts as the front end view of the application, 
+	with which the user interacts. 
+
+5. doGET() - HTTP GET requests are idStuotent. I.e. you get exactly the same result everytime you execute the 
+	request (leaving authorization/authentication and the time-sensitive nature of the page —search results, 
+	last news, etc— outside consideration). We can talk about a bookmarkable request. Clicking a link, clicking 
+	a bookmark, entering raw URL in browser address bar, etcetera will all fire a HTTP GET request. If a Servlet 
+	is listening on the URL in question, then its doGet() method will be called. It's usually used to preprocess a 
+	request. I.e. doing some business stuff before presenting the HTML output from a JSP, such as gathering data for 
+	display in a table.
+
+6. doPOST() - HTTP POST requests are not idStuotent. If the enduser has submitted a POST form on an URL beforehand, 
+	which hasn't performed a redirect, then the URL is not necessarily bookmarkable. The submitted form data is 
+	not reflected in the URL. Copypasting the URL into a new browser window/tab may not necessarily yield exactly 
+	the same result as after the form submit. Such an URL is then not bookmarkable. If a Servlet is listening on 
+	the URL in question, then its doPost() will be called. It's usually used to postprocess a request. I.e. gathering 
+	data from a submitted HTML form and doing some business stuff with it (conversion, validation, saving in DB, etcetera). 
+	Finally usually the result is presented as HTML from the forwarded JSP page.
+
+q1. create a webpage to accept data from user: 
+	Student ID (start with s and 3 digits)
+	Name (not more than 30 ch)
+	Age (<25)
+	Marks (not negative)
+	Percentage
+	Grade (A,B,C,D,E),  use text box and and button control, store data permanently inside flat file, Store minimum 10 records,
+	read all data from file and display how many students have passed and how many failed.
+
+	--getRealPath
+
+<html>  
+      <head>  
+          <title>Student Data</title>  
+      </head>  
+      <body>         
+              <h1> Enter the Student Data </h1>             
+              <form action="........." method="GET">  
+                   
+                  <div>  
+                      <input type ="Text" name="StuID" value="StuID"/>  
+                      <input type ="Text" name="StuName" value="StuName"/>  
+                      <input type ="Text" name="StuAge" value="StuAge"/>  
+                      <input type ="Text" name="StuMark" value="StuMark"/>  
+                      <input type ="Text" name="Stu%" value="Stu%"/>  
+                      <input type ="Text" name="StuGrade" value="StuGrade"/>  
+                      <input type ="Submit" name="Submit" value="Submit"/>  
+                      <input type ="Reset" name="Reset" value="Reset"/>  
+                  </div>  
+                   
+              </form>         
+      </body>  
+  </html> 
+
+
+Servlet -----
+	
+		
+	String StuID = request.getParameter("StuID");
+	if(StuID.charAt(0)!=s || StuID.length()!=4)
+	{
+		System.out.println("Invalid Student ID");
+	}
+	String StuName = request.getParameter("StuName");
+	if(StuName.length()>30)
+	{
+		System.out.println("Name greater than 30 characters");
+	}
+	String Age = request.getParameter("StuAge");
+	int sAge = Integer.parseInt(Age);
+	if(sAge>25)
+	{
+		System.out.println("Age not eligible");
+	}
+	String StuMark = request.getParameter("StuMark");
+	int sMark = Integer.parseInt(StuMark);
+	if(sMark<0)
+	{
+		System.out.println("Mark cannot be negative");
+	}
+	String Stu% = request.getParameter("Stu%");
+	float s% = Float.parseInt(Stu%);
+	String StuGrade = request.getParameter("StuGrade");
+	if(StuGrade!= "A" || StuGrade!= "B" || StuGrade!= "C" || StuGrade!= "D" || StuGrade!= "E")
+	{
+		System.out.println("Invalid Grade");
+	}
+	
+	if(Stu%<50)
+	{
+		System.out.println("Fail");
+		
+	}
+	else
+	{
+		System.out.println("Pass");
+		
+	}
+
+	  String s[] = new String[6];  
+          String s1[] = new String[6];  
+          s[0] = "Student ID \t: ";  
+          s[1] = "Student Name \t: ";  
+          s[2] = "Student Age \t: ";      
+          s[3] = "Student Mark : ";  
+          s[4] = "Student % \t: ";  
+          s[5] = "Student Grade \t: ";  
+          s1[0] = String.valueOf(StuID);  
+          s1[1] = StuName;  
+          s1[2] = StuAge;  
+          s1[3] = String.valueOf(StuMark);  
+          s1[4] = String.valueOf(Stu%);  
+          s1[5] = Grade; 
+
+	
+	FileWriter fout = new FileWriter("....................", true);  
+        try  
+        {
+	BufferedWriter bw = new BufferedWriter(fout)  
+        for(int i=0; i<6; i++)  
+        {
+	      bw.write(s[i]+s1[i]+",");  
+              bw.newLine();  
+        }
+	bw.write("-")   
+	catch(Exception e)
+	{
+	e.printStackTrace();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+q2. create webpage to accept registration details from user, 
+name
+gender (radio)
+email (should have @  .com)
+address
+contact details
+date of birth (1900 to 2016)
+city
+state
+country (dropdown)
+ 
+
+	  
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
