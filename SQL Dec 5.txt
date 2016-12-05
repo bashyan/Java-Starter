@@ -1,0 +1,42 @@
+DataBase:
+
+Master table
+Transactional table
+
+mysql> CREATE TABLE IF NOT EXISTS salespeople (
+->	snum	INT NOT NULL,
+-> 	sname	VARCHAR(30) NOT NULL,
+->	city	VARCHAR(30) NOT NULL,
+->	comm	DECIMAL (4,2) NOT NULL,
+->	);
+mysql>show table;
+................
+................
+mysql>describe salespeople;
+................
+................
+mysql> INSERT INTO salespeople VALUES (1001, 'Peel', 'London', 0.12);
+mysql> select*from salespeople;
+................
+................
+mysql> INSERT INTO salespeople VALUES (1002, 'Serres', 'London', 0.13);
+
+mysql> CREATE TABLE IF NOT EXISTS customer(
+->	cnum	INT NOT NULL,
+-> 	cname	VARCHAR(30) NOT NULL,
+->	city	VARCHAR(30) NOT NULL,
+->	rating	int NOT NULL,
+-> 	snum 	int NOT NULL,
+->	PRIMARY KEY(cnum), 
+->	FOREIGN KEY (snum) REFERENCES salespeople(snum)
+->	);
+mysql> INSERT INTO customer VALUES (2004, 'Hoffman', 'London', 100, 1001);
+mysql> select a.cname,b.sname from customer a, salespeople b where a.snum = b.snum;
+mysql> select * from customer where city = 'London';
+mysql> select * from customer order by city;
+mysql> select cname, city, rating from customer where city = 'Rome';
+mysql> select * from customer order by rating; 	 
+
+
+
+
