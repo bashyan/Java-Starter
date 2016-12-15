@@ -1,0 +1,19 @@
+When data becomes too large for processing and management, then this data is big data.
+
+volume, variety(structures, unstructures and semi structured), velocity, varasity, value
+
+Big Data Analytics:
+Hadoop is a framwork, written in java, open source by Apache.
+
+Distributed file system: storing in divided data blocks, stored seperated making replica,
+	 64/128 MB block fixed size.
+
+HDFS: 	scalable(can add nodes and increase cluster(amount of data stored on that particular cluster(adding all HDD size of all machines)) size),-- no initial data device investment, can grow as demand grows, 
+	reliable(as we have 3 replica(no replica in same machine), the data is reliable),
+	manageable(can perform multiple operation in same machine) and 
+	economical(commodity hardware, minimize BW consumption and latency)
+
+stand by vs secondary
+online is stand by, sec takes backup every 1 hr
+
+ 
