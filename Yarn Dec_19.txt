@@ -1,0 +1,85 @@
+
+block 1
+we are learning hadoop
+we are learning hadoop
+
+block 2
+we are learning hadoop
+we are learning hadoop
+we are learning hadoop
+
+are- 5 , hadoop - 5, learning - 5, we - 5
+
+input key - row no
+input value - entire row
+output key - word
+output value - count of each word - 1
+
+Mapper 1,
+----------
+we, 1
+are, 1
+learning, 1
+hadoop, 1
+we, 1
+are, 1
+learning, 1
+hadoop, 1
+
+Mapper 2,
+-----------
+we, 1
+are, 1
+learning, 1
+hadoop, 1
+we, 1
+are, 1
+learning, 1
+hadoop, 1
+we, 1
+are, 1
+learning, 1
+hadoop, 1
+
+sort + shuffle
+---------------
+are, (1,1,1,1,1)
+hadoop(1,1,1,1,1)
+learning(1,1,1,1,1)
+we(1,1,1,1,1)
+
+reducer
+--------
+are,5
+hadoop,5
+learning,5
+we,5
+
+ubuntu,
+
+$ hadoop fs -ls /niit
+$ gedit niit.txt
+$ cat niit.txt
+we are learning hadoop
+we are learning hadoop
+we are learning hadoop
+we are learning hadoop
+we are learning hadoop
+
+$ hadoop fs -copyFromLocal niit.txt /niit
+$ hadoop fs -cat /niit/niit.txt
+$ ls niit_wc.jar
+niit_wc.jar
+$ hadoop jar niit_wc.jar WordCount_niitClass /niit/niit.txt /niit/mr_output1newdir
+
+
+
+$ hadoop fs -cat /niit/mr_output1newdir/part-r-00000
+are	5
+hadoop	5
+learning	5
+we	5
+$
+
+
+
