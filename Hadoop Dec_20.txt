@@ -1,0 +1,19 @@
+Hadoop
+
+54310(user defined) is a port id used to access namespace, here the virtual file system of hadoop will run. we can access hdfs through this port.
+
+$ hadoop fs -ls /niit
+
+$ hadoop fs -ls hdfs://localhost:54310/niit
+
+$hadoop fs -cat /niit/niit1.txt to read the file
+
+create new file:
+
+$ nano niit2.txt  -- write content into this 
+now transfer this file from local file sys to hdfs,
+$ hadoop fs -copyFromLocal niit2.txt /niit
+we cant give nano/vi/gedit to hdfs file, we need to trasfer then do edit
+sec namenode- localhost:50090 on namenode
+
+
