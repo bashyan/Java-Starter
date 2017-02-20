@@ -1,0 +1,329 @@
+Which collection interface in Java is used to maintain unique elements?
+
+Map interface in Java maps unique keys to values, given a key and value pair- the value is stored in the Map object which can be retrieved using the key.
+
+What platform and version of Java is required to work with Apache Hadoop?
+
+The recommended java version to with Apache Hadoop is 1.6 or higher, preferred from Sun. Windows and Linux are the supported operating systems to work with Hadoop but Mac OS is famous for working with hadoop.
+
+What is the difference between an abstract class and interface?
+
+Interface is different from an abstract class because interface is just a type that can be satisfied by a class which implements the interface. Interfaces in java help implement multiple inheritance because a class can extend only one other class.
+
+Interface do not have any implementation and just are limited to constants and public methods whereas abstract class in java can have partial implementation along with static methods and protected access blocks. A class can extend only one abstract class but it can implement several interfaces.
+
+Differentiate between Throw and Throws in Exception Handling.
+
+Throw clause is used when a user wants to throw a customized explicit exception. Throw clause is used if there is a need for a specific exception to be thrown to the calling method.
+
+try {
+
+if (age>=100) {throw new AgeBarException (); //This is a customized exception
+
+} else {
+
+....}
+
+}
+
+} catch (AgeBarException ex) {
+
+...code to handle Exception.....
+
+}
+
+Throws Clause lists all the exceptions that piece of code might throw. Throws clause provides a warning to the invoking method that these are the list of exceptions it might throw and all these need to be handled.
+
+throws is used to declare an exception whereas throw clause is used to explicitly throw an exception.
+throws clause is specified in the method signature whereas throw clause is used within a method.
+Throws clause is often followed by a class whilst throw clause is often followed by an instance.
+
+
+
+
+
+
+
+
+
+
+
+How will you find if two strings are same or not?
+
+Two strings in Java can be compared using the equals () method and not ==. Using == to compare strings will compare if the two string variables point to the same instance of a string object and not the actual value of the strings.
+
+How will you create the object of an abstract class?
+
+Objects cannot be created for an abstract class.
+
+
+What is the difference between method overloading and overriding in Java?
+
+Method overloading happens during compile time within a class whereas Method Overriding happens between two classes that have IS-A i.e. inheritance relationship. For method overriding we require parent and child classes whereas for method overloading a single class is enough.
+
+Static binding is used for method overloading as the call to the overloaded method is made during the compile time whereas dynamic binding is used for method overriding as the call to the overridden method is made at run time.
+Method overloading requires different argument list to the method whereas in method overriding the argument list has to be same.
+Method overloading gives better performance over method overriding since the binding of the overloaded methods is done at compile time and not run time.
+____________________________________
+What happens if you do not provide any package declaration in your java programming code?
+
+When no package declaration is specified, java.lang package gets imported by default.
+______________________________________
+Explain about garbage collection in Java.
+
+Java manages memory automatically by removing the unused variable or objects from the memory. This process is referred to as garbage collection. User java programs cannot free the object memory , so the garbage collector (gc) in java free’s the objects or variables that are no longer being used by a program. JVM considers an object or variable as alive as long as it is being referenced by a program. Once it finds that the object cannot be reached by the program code, it is removed and so that the unused memory can be reclaimed.
+________________________________________
+Where should the package statement appear within a java source code file?
+
+The package statement should always be the very first line of a java program code.
+_______________________________________
+How will you implement multiple inheritance in Java?
+
+Java does directly support multiple inheritance unlike C++ but multiple inheritance can be implemented in Java through interfaces.
+
+____________________________________
+
+What are the access specifiers available in Java?
+
+Java has 4 levels of access specifiers-
+
+Private -Variables, methods classes and constructors are visible only to the class.
+Protected – Variables, methods classes and constructors are visible to the package and also within all the subclasses.
+Public - Variables, methods classes and constructors are visible anywhere.
+Default- Visible to the package and there is no specific keyword to specify this access specifier, it is declared by default.
+
+_______________________________________________________
+
+Is it mandatory to have a catch block after every try block in the program code?
+
+
+
+____________________________________________
+
+Under what circumstances is the finally block not executed?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Which collection interface in Java is used to maintain unique elements?
+
+Map interface in Java maps unique keys to values, given a key and value pair- the value is stored in the Map object which can be retrieved using the key.
+
+
+What platform and version of Java is required to work with Apache Hadoop?
+
+The recommended java version to with Apache Hadoop is 1.6 or higher, preferred from Sun. Windows and Linux are the supported operating systems to work with Hadoop but Mac OS is famous for working with hadoop.
+
+
+What is the difference between an abstract class and interface?
+
+Interface is different from an abstract class because interface is just a type that can be satisfied by a class which implements the interface. Interfaces in java help implement multiple inheritance because a class can extend only one other class.
+
+Interface do not have any implementation and just are limited to constants and public methods whereas abstract class in java can have partial implementation along with static methods and protected access blocks. A class can extend only one abstract class but it can implement several interfaces.
+
+
+Differentiate between Throw and Throws in Exception Handling.
+
+Throw clause is used when a user wants to throw a customized explicit exception. Throw clause is used if there is a need for a specific exception to be thrown to the calling method.
+
+try {
+
+if (age>=100) {throw new AgeBarException (); //This is a customized exception
+
+} else {
+
+....}
+
+}
+
+} catch (AgeBarException ex) {
+
+...code to handle Exception.....
+
+}
+
+Throws Clause lists all the exceptions that piece of code might throw. Throws clause provides a warning to the invoking method that these are the list of exceptions it might throw and all these need to be handled.
+
+throws is used to declare an exception whereas throw clause is used to explicitly throw an exception.
+throws clause is specified in the method signature whereas throw clause is used within a method.
+Throws clause is often followed by a class whilst throw clause is often followed by an instance.
+
+How will you find if two strings are same or not?
+
+Two strings in Java can be compared using the equals () method and not ==. Using == to compare strings will compare if the two string variables point to the same instance of a string object and not the actual value of the strings.
+
+How will you create the object of an abstract class?
+
+Objects cannot be created for an abstract class.
+
+What is the difference between method overloading and overriding in Java?
+
+Method overloading happens during compile time within a class whereas Method Overriding happens between two classes that have IS-A i.e. inheritance relationship. For method overriding we require parent and child classes whereas for method overloading a single class is enough.
+
+Static binding is used for method overloading as the call to the overloaded method is made during the compile time whereas dynamic binding is used for method overriding as the call to the overridden method is made at run time.
+Method overloading requires different argument list to the method whereas in method overriding the argument list has to be same.
+Method overloading gives better performance over method overriding since the binding of the overloaded methods is done at compile time and not run time.
+
+What happens if you do not provide any package declaration in your java programming code?
+
+When no package declaration is specified, java.lang package gets imported by default.
+
+Explain about garbage collection in Java.
+
+Java manages memory automatically by removing the unused variable or objects from the memory. This process is referred to as garbage collection. User java programs cannot free the object memory , so the garbage collector (gc) in java free’s the objects or variables that are no longer being used by a program. JVM considers an object or variable as alive as long as it is being referenced by a program. Once it finds that the object cannot be reached by the program code, it is removed and so that the unused memory can be reclaimed.
+
+Where should the package statement appear within a java source code file?
+
+The package statement should always be the very first line of a java program code.
+
+How will you implement multiple inheritance in Java?
+
+Java does directly support multiple inheritance unlike C++ but multiple inheritance can be implemented in Java through interfaces.
+
+
+What are the access specifiers available in Java?
+
+Java has 4 levels of access specifiers-
+
+Private -Variables, methods classes and constructors are visible only to the class.
+Protected – Variables, methods classes and constructors are visible to the package and also within all the subclasses.
+Public - Variables, methods classes and constructors are visible anywhere.
+Default- Visible to the package and there is no specific keyword to specify this access specifier, it is declared by default.
+
+Is it mandatory to have a catch block after every try block in the program code?
+
+It is not necessary to have a catch block after every try block in the program code. All exceptions that are likely to be thrown should be mentioned in the throws clause of the method followed by either a catch block or a finally block.
+
+
+Under what circumstances is the finally block not executed?
+
+If the program terminates due to a fatal error or it exits by calling the system.exit () method then finally block is not executed.
+
+What are the different ways of creating a string object in Java?
+
+String objects in java can be created either by using the new keyword or by using a string literal.
+
+String Creation using a Literal –
+
+String str= “DeZyre”;
+
+String Object Creation using the “new” operator -
+
+String str=new String ("DeZyre"); //creates two objects and one reference variable 
+
+How many objects will be created on executing the following code for creation of a string using the string literal?
+String str1=”DeZyre”;
+
+String str2=”DeZyre”;
+
+String str3=”DeZyre”;
+
+Only one object will be created because every time when we create a string literal, the JVM checks for the presence of the string in the string constant pool. Only if the string is not present in the pool then a new string instance will be created, otherwise a reference to the pooled instance is returned.
+
+In a java program, we usually follow the main method declaration as public static void main (). What will happen if I alter the order of public and static declaration for the main () method in a java program?
+
+Changing the order of the keywords ‘public’ and ‘static’ in the main () method declaration of a Java program does not matter but one must always ensure that the return type of the main () method i.e. void should always appear before main ().
+
+I have 10 .java files in a folder. What is the process to compile all the files using a single command line execution instead of compiling each .java file separately?
+
+Executing the “javac *.java “command from the directory location will compile all the files present in the folder with .java extension.
+______________
+
+Is it necessary to declare a main () method inside all java classes?
+
+It is not necessary to declare a main () method inside all java classes unless the source class is a java application.
+
+
+What are real-time industry applications of Hadoop?
+
+
+Hadoop, well known as Apache Hadoop, is an open-source software platform for scalable and distributed computing of large volumes of data. It provides rapid, high performance and cost-effective analysis of structured and unstructured data generated on digital platforms and within the enterprise. It is used in almost all departments and sectors today.Some of the instances where Hadoop is used:
+Managing traffic on streets.
+Streaming processing.
+Content Management and Archiving Emails.
+Processing Rat Brain Neuronal Signals using a Hadoop Computing Cluster.
+Fraud detection and Prevention.
+Advertisements Targeting Platforms are using Hadoop to capture and analyze click stream, transaction, video and social media data.
+Managing content, posts, images and videos on social media platforms.
+Analyzing customer data in real-time for improving business performance.
+Public sector fields such as intelligence, defense, cyber security and scientific research.
+Financial agencies are using Big Data Hadoop to reduce risk, analyze fraud patterns, identify rogue traders, more precisely target their marketing campaigns based on customer segmentation, and improve customer satisfaction.
+Getting access to unstructured data like output from medical devices, doctor’s notes, lab results, imaging reports, medical correspondence, clinical data, and financial data. Read this log to find out how Big Data is transforming real estate now.
+
+How is Hadoop different from other parallel computing systems?
+
+Hadoop is a distributed file system, which lets you store and handle massive amount of data on a cloud of machines, handling data redundancy. Go through this HDFS content to know how the distributed file system works. The primary benefit is that since data is stored in several nodes, it is better to process it in distribute
+
+
