@@ -1,0 +1,251 @@
+
+
+Explain “Big Data” and what are five V’s of Big Data?
+
+Please explain?
+
+What is Hadoop and its components. 
+HDFS - storage unit
+MAPREDUCE or YARN - processing framework
+
+What is HDFS? How the data get stored on HDFS?
+
+components of hdfs?
+Namenode
+Datanode
+Secondary Namenode or Standby Namenode
+
+What architecture ?
+Master - Namenode and SNN
+Slaves - datanodes
+
+2 GB of data on the hadoop cluster
+blocks = ?
+block size = 128 MB
+1024x 2/128 = 16 blocks
+
+block_file
+block_file.meta
+
+cluster = 50 datanodes
+
+what is replication factor ?
+
+2 replicas of the same block on the same datanode?
+
+in a 2 node cluster - repl factor is 3. how many blocks would be there for each replica?
+
+One as a missing replica fsck command.
+
+under replicated blocks
+
+What are racks ?
+
+What is rack awareness ?
+
+Rack 1 = 3 Nodes , Node 1-2-3
+Rack 2 =  2 Nodes Node -4-5
+
+Block 1 - 1-2-3
+or
+1-2-4
+
+hadoop fs -ls
+equal to
+hadoop fs -ls /user/hduser
+
+hadoop fs -put file1.txt
+
+/user/hduser
+
+Namenode-master
+------------------------
+meta data - block id, locations, repl factor, permissions for each file
+
+where is this meta data stored 
+fs-image and edits
+AND
+RAM of the namenode
+
+what happens if the memory gets saturated in namenode?
+
+no more fresh data can be added up in the cluster
+
+Namenode federation.
+
+We can add more primary namenodes
+NN-1 and NN-2
+
+50 node - 100 GB extra space unutilised
+
+what is HA in namenode.
+
+High Availibility in Namenode
+
+secondary name node is cold backup
+standby namenode is hot backup
+
+zookeeper
+
+Datanodes - slaves
+
+which node is responsible for replication?
+
+Process of replication is done by datanode
+on the instruction of the namenode
+
+Reading and Writing in HDFS
+1) sequentially - 
+2) parallely
+
+Process is done parallelly
+
+who writes the data on datanodes
+1) client
+2) namenode
+
+pipeline of datanodes
+
+who reads the data from the datanode
+1) client
+2) namenode
+
+client will frst approach the NN. Take the metadata for that block
+
+USer or a client interacts with datanode directly.
+
+What is MapReduce?
+
+What are Mappers ?
+
+Mappers job is to filter and transform the data to the lowest logical level
+
+Mapper input = 1000 records
+Mapper output = 600 records
+
+What is sort and Shuffle
+Keys are sorted
+Values are put together for each key from all the mappers
+
+Values are sorted?
+Yes/NO?
+
+how does Reduce function work?
+
+key1, (V1, V2...)
+Key2, (V3, V4...)
+
+What parameters are we passing in the reduce function?
+
+default input Format class
+
+input key - LongWritable - offset number of the record
+
+input value - Text - full line or full record
+
+job.setMapOutputKeyClass(Text.class);
+job.setMapOutputValueClass(IntWritable.class);
+
+job.setInputFormatClass(TextInputFormat.class);
+
+job.setOutputFormatClass(TextInputFormat.class);
+
+Map tasks = ?
+
+Reduce tasks = ?
+
+job.setNumReduceTasks(int);
+
+output = 10 records in case 1 reducer
+job.setNumReduceTasks(2);
+part-r-00000 - 5
+part-r-00001 -  5
+
+What are combiners ?
+
+one key - 1000 values
+
+after combiner
+
+one key - one value
+
+What are partitioners ?
+
+What are Distributed Cache?
+
+what are the different types of joins
+
+In mapside join
+can join 2 more files.
+
+One Big Table + 2  small tables
+
+<=100 MB
+
+In a mapside join how many reducers are required?
+
+Mapper output is the final output
+
+job.setNumReduceTasks(0);
+
+join the data and extract the data from the map function before writing the output to the context class
+
+What is the Reduce Side join
+Joining 2 or more large data sets having a common key at reducer level
+
+MultipleInputs.
+
+important config files to configure hadoop
+
+core-site.xml
+it contains common properties for hdfs and mapreduce
+
+core-default.xml in hadoop 2.6.0
+
+fs.default.name 
+absolute path to the hd fs
+
+hdfs://128.25.24.1:9000/niit
+
+
+mapred-site.xml
+it contains only mapreduce properties
+
+mapred-default.xml in hadoop 2.6.0
+
+50070 - port no to run the Namenode
+8088 - resource manager
+19888 - job history server
+
+hdfs-site.xml
+for namenode, datanode and secondary namenode properties
+
+hdfs-default.xml 
+
+dfs.replication
+dfs.blocksize = 134217728
+
+1024x1024x128 = 134217728
+
+What is YARN?
+
+in hadoop 1.x - mapreduce framework
+
+it is a processing framework in hadoop 2.x
+
+components of YARN?
+Resource Manager - master
+Node Manager - slaves
+
+In hadoop 1.x we had job tracker and task tracker.
+in 1.x number of jobs were limited
+YARN flow
+------------
+1. user fires a job to RM
+2. RM will a create a container on a single DN
+3. Launch App Master in that container
+4. Create containers on nodes where the blocks are located
+5. Node Manager will run the tasks (Map or Reduce) in those containers
+
+New AppMaster is created for every single query
+
